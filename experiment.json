@@ -1,7 +1,7 @@
 {
     "output": "logs/log.log",
     "config_name": "reproduction",
-    "memory_needed": 1.5,
+    "memory_needed": 0.0,
     "command": "python3 our_approach.py",
     "args": [
         "--embedding_file glove.6B.100d.txt",
