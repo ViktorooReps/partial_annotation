@@ -6,6 +6,7 @@
     "args": [
         "--embedding_file glove.6B.100d.txt",
         "--model_type our_soft",
+        ["--seed=1", "--seed=2", "--seed=3", "--seed=4", "--seed=5"],
         ["--entity_keep_ratio 0.5", "--entity_keep_ratio 0.4", "--entity_keep_ratio 0.3", "--entity_keep_ratio 0.2",
           "--entity_keep_ratio 0.15", "--entity_keep_ratio 0.10", "--entity_keep_ratio 0.05"],
         "--dataset conll2003",
