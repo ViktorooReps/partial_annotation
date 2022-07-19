@@ -1,0 +1,15 @@
+{
+    "output": "logs/log.log",
+    "config_name": "reproduction",
+    "memory_needed": 1.5,
+    "command": "python3 our_approach.py",
+    "args": [
+        "--dynet_devices=GPU:0",
+        "--embedding_file glove.6B.100d.txt",
+        "--model_type our_soft",
+        ["--entity_keep_ratio 0.5", "--entity_keep_ratio 0.4", "--entity_keep_ratio 0.3", "--entity_keep_ratio 0.2",
+          "--entity_keep_ratio 0.15", "--entity_keep_ratio 0.10", "--entity_keep_ratio 0.05"],
+        "--dataset conll2003",
+        "--use_char_rnn 1"
+    ]
+}

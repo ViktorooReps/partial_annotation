@@ -86,7 +86,7 @@ def get_model(config, model):
     else:
         raise  Exception ("unknown model type: %s" % (config.model_type))
 
-def train(iterations, epoch, all_insts, dev_insts, test_insts, init):
+def train(iterations, epoch, all_insts, dev_insts, test_insts, init, run_config):
 
 
     print("number of folds: %d" % (len(all_insts)))
@@ -205,6 +205,8 @@ def train(iterations, epoch, all_insts, dev_insts, test_insts, init):
         test_inst.prediction = bicrf.decode(test_inst.input.word_ids, test_inst.input.char_ids)
     test_metrics = eval.evaluate(test_insts)
     print("[Final Test set] Precision: %.2f, Recall: %.2f, F1: %.2f" % (test_metrics[0], test_metrics[1], test_metrics[2]))
+    with open('results.csv', 'a') as f:
+        f.write(f'{run_config.entity_keep_ratio:.2f},{test_metrics[2]},{test_metrics[0]},{test_metrics[1]}\n')
     eval.save_results(test_insts, model_name + ".res")
 
 
@@ -362,7 +364,7 @@ if __name__ == "__main__":
         print("num words: " + str(len(config.word2idx)))
         # print(config.word2idx)
 
-        train(config.large_iter, config.num_epochs, all_insts, dev_insts, test_insts, opt.initialization)
+        train(config.large_iter, config.num_epochs, all_insts, dev_insts, test_insts, opt.initialization, config)
 
         print(opt.mode)
     else:
