@@ -163,8 +163,8 @@ class Config:
                 elif word.lower() in self.embedding:
                     self.word_embedding[self.word2idx[word], :] = self.embedding[word.lower()]
                 else:
-                    self.word_embedding[self.word2idx[word], :] = np.copy(self.embedding[self.unk])
-                    # self.word_embedding[self.word2idx[word], :] = np.random.uniform(-scale, scale, [1, self.embedding_dim])
+                    # self.word_embedding[self.word2idx[word], :] = np.copy(self.embedding[self.unk])
+                    self.word_embedding[self.word2idx[word], :] = np.random.uniform(-scale, scale, [1, self.embedding_dim])
             self.embedding = None
         else:
             self.word_embedding = np.empty([len(self.word2idx), self.embedding_dim])

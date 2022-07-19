@@ -36,7 +36,7 @@ class Reader:
                         break
                     continue
                 if self.dataset == "conll2003":
-                    word, _, label = line.split()
+                    word, label = line.split()
                 elif self.dataset == "conll2002" or self.dataset == "ecommerce" or self.dataset == "youku":
                     x = line.split()
                     if len(x) == 1:
