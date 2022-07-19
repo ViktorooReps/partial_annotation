@@ -4,7 +4,7 @@
     "memory_needed": 1.5,
     "command": "python3 our_approach.py",
     "args": [
-        "--dynet_devices=GPU:0",
+        "--dynet_devices GPU:0",
         "--embedding_file glove.6B.100d.txt",
         "--model_type our_soft",
         ["--entity_keep_ratio 0.5", "--entity_keep_ratio 0.4", "--entity_keep_ratio 0.3", "--entity_keep_ratio 0.2",
