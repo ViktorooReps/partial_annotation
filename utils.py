@@ -40,7 +40,7 @@ def remove_entites(train_insts: List[Instance], config: Config) -> None:
                 all_spans.append(Span(i, i, output[i][2:], inst_id=inst.id))
     shuffle(all_spans)
 
-    span_set = set()
+    deleted_spans = list()
     num_entity_removed = round(len(all_spans) * (1 - config.entity_keep_ratio))
     for i in range(num_entity_removed):
         span = all_spans[i]
@@ -50,8 +50,8 @@ def remove_entites(train_insts: List[Instance], config: Config) -> None:
             output[j] = config.O
         span_str = ' '.join(train_insts[id].input.words[span.left:(span.right + 1)])
         span_str = span.type + " " + span_str
-        span_set.add(span_str)
-    return span_set
+        deleted_spans.append(span_str)
+    return deleted_spans
 
 def check_bies_constraint(previous: str, next: str) -> bool:
     """

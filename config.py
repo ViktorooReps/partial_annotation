@@ -265,7 +265,7 @@ class Config:
         for inst in train_insts:
             pos = 0
             for word, label in zip(inst.input.words, inst.output):
-                if not inst.is_prediction[pos]:
+                if not inst.is_prediction[pos]:  # == not O label
                     if self.label2idx[label] not in word_dict[word]:
                         word_dict[word][self.label2idx[label]] = 1
                     else:
